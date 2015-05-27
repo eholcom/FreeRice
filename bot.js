@@ -15,34 +15,31 @@
 *   - Famous Paintings
 * ------------------------------------------
 *
-* # Currently has answer keys/lookup embedded,
-*   may want to move that out to a separate file.
-*   That could have issues loading cross-domain though.
-*
-* # Using global 'frBotInstance' within class to just get it to work with timeouts.
+* # May want to move answer keys out to a separate .js file (that could have issues loading cross-domain though).
 *
 ********************************************/
 
 function FRBot() {
 
-	this.started = 0;			//Date/time the bot started
-	this.runDuration = 2.5;		//Set to stop after this amount of time (in hours)
-	this.maxRice = -1;			//Set to a positive number to stop once that much rice has been collected
-	this.riceDonated = 0;		//Assuming 10 per correct answer
-	this.timeoutId = 0;			//Used internally
+	this.runDuration = 2.5;  //Set to stop after this amount of time (in hours)
+	this.maxRice = -1;       //Set to a positive number to stop once that much rice has been collected
+	this.riceDonated = 0;    //Assuming 10 per correct answer
+	this.started = 0;        //Date/time the bot started
+	this.timeoutId = 0;      //Used internally
 	this.iterations = 0;
+	FRthis = this;
 	
 	this.run = function() {
 		this.started = Date.now();
 		this.runLoop();
 		if( this.runDuration > 0 )
-			setTimeout(function(){frBotInstance.stop()},1000*60*60*this.runDuration);
+			setTimeout(function(){FRthis.stop()},1000*60*60*this.runDuration);
 	};
 	
 	this.runLoop = function() {
 		/* Answer a question and schedule answering the next one in some random amount of time */
-		frBotInstance.getRice();
-		frBotInstance.timeoutId = setTimeout(function(){frBotInstance.runLoop()}, Math.random()*2400+2100+(Math.random()<.02?(Math.random()*35000):0) );
+		this.getRice();
+		this.timeoutId = setTimeout(function(){FRthis.runLoop()}, Math.random()*2400+2100+(Math.random()<.02?(Math.random()*35000):0) );
 		this.iterations++;
 	};
 	
