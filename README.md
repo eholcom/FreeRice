@@ -5,7 +5,7 @@ Originally based on this 1-liner that only does multiplication:
   http://theedward.me/autorice-automatic-freerice-cheat-script/
 (There's also more info on how to run it, etc. there if you need it.)
 
-To use, paste the **bot.js** content into the browser's console (F12) and hit Enter.
+To use, paste the [**bot.js**](https://raw.githubusercontent.com/eholcom/FreeRice/master/bot.js) content into the browser's console (F12) and hit Enter.
 
 It will mimic human behavior in that it will take a random amount of time to answer each question (~2-5 seconds) and sometimes longer.  There are parameters to set how long it will run or to collect a certain amount of rice before stopping. 
 
