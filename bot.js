@@ -60,8 +60,9 @@ function FRBot() {
 			return $("#twt-skip").click();		
 		
 		/* Select an answer to the question presented */
-		if( type.indexOf("Chemical Sym")!=-1 )
+		if( type.indexOf("Chemical Sym")!=-1 ) {
 			Answer = ElementLookup[$("#question-title b").text()];
+		}
 		else if( type.indexOf("Vocab")!=-1 ) {
 			if( $("#game-status td").length )
 				VocabAnswers[$("#game-status td").text().split(" = ")[0].substr(status.indexOf("Correct!")!=-1?9:11)]=$("#game-status td").text().split(" = ")[1];
