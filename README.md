@@ -20,4 +20,4 @@ It will mimic human behavior in that it will take a random amount of time to ans
   * Flags of the world
   * Famous Paintings
 
-This is meant as an example only and should not be used to spam FreeRice.com with traffic or anything of that nature.  **And as a reminder, FreeRice.com works off ad revenue, so you should turn off your ad-blocker and/or click some ads from time to time to help them pay the bills for all that rice!**
+This is meant as an example/coding exercise only and should not be used to spam FreeRice.com with traffic or anything of that nature.  **And as a reminder, FreeRice.com works off ad revenue, so you should turn off your ad-blocker and/or click some ads from time to time as you're playing to help them pay the bills for all that rice!**
