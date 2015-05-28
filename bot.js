@@ -1,7 +1,8 @@
 /*******************************************
 *  FRBot - Learning FreeRice.com bot
 *  Version: 1.1
-*  May 27, 2015
+*  Repository: https://github.com/eholcom/FreeRice
+*  Updated: May 27, 2015
 *
 *  Works with the following subjects (with pre-loaded answers): 
 *   - English Vocabulary,
