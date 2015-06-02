@@ -32,6 +32,7 @@ function FRBot() {
 	
 	this.run = function() {
 		this.started = Date.now();
+		this.iterations = this.riceDonated = 0;
 		this.runLoop();
 		if( this.runDuration > 0 )
 			setTimeout(function(){FRthis.stop()},1000*60*60*this.runDuration);
@@ -88,8 +89,35 @@ function FRBot() {
 	};
 	
 	this.stop = function() {
-	clearTimeout(this.timeoutId);
+		clearTimeout(this.timeoutId);
+		this.started = 0;
 	};
+	
+	this.status = function() {
+		if( this.started != 0 ) {
+			var info = '';
+			var elapsedMinutes = ( Date.now() - this.started ) / ( 1000 * 60 );
+			info = info.concat( 'Running for ' );
+			if( elapsedMinutes <= 59 )
+				info = info.concat( Math.floor(elapsedMinutes) + ' minutes\n' );
+			else
+				info = info.concat( (elapsedMinutes / 60).toFixed(2) + ' hours\n' );
+			info = info.concat( 'Rice donated: ' + this.riceDonated + '\n' );
+			info = info.concat( 'Questions seen: ' + this.iterations + '\n' );
+			if( this.maxRice != -1 )
+				info = info.concat( 'Max rice to collect: ' + this.maxRice + '\n' );
+			if( this.runDuration > 0 ) {
+				var timeLeft = this.runDuration * 60 - elapsedMinutes ;
+				if( timeLeft >= 60 )
+					info = info.concat( 'Time left: ' + ( timeLeft / 60 ).toFixed(2) + ' hours\n' );
+				else 
+					info = info.concat( 'Time left: ' + timeLeft.toFixed(2) + ' minutes\n' );
+			}
+			console.log( info );
+		}
+		else
+			console.log( 'Stopped' );
+	}
 };
 
 /* Chem. symbol key */
