@@ -54,7 +54,7 @@ function FRBot() {
 		
 		/* Check for return conditions */
 		if( this.maxRice > 0 && this.riceDonated >= this.maxRice)
-			return frBotInstance.stop();
+			return this.stop();
 		if( $("#twt-skip").length )
 			return $("#twt-skip").click();		
 		
