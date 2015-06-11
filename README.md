@@ -15,9 +15,9 @@ It will mimic human behavior in that it will take a random amount of time to ans
   * Multiplication table, 
   * Identify Countries on the Map
   * Flags of the world
+  * World Landmarks
 
 * The following will work, but it will have to learn what's correct as it goes:
-  * World Landmarks
   * Famous Paintings
 
 This is meant as an example/coding exercise only and should not be used to spam FreeRice.com with traffic or anything of that nature.  **And as a reminder, FreeRice.com works off ad revenue, so you should turn off your ad-blocker and/or click some ads from time to time as you're playing to help them pay the bills for all that rice!**
