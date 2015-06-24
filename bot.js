@@ -28,6 +28,7 @@ function FRBot() {
 	this.started = 0;        //Date/time the bot started
 	this.timeoutId = 0;      //Used internally
 	this.iterations = 0;
+	this.paused = false;
 	FRthis = this;
 	
 	this.run = function() {
@@ -40,10 +41,17 @@ function FRBot() {
 	
 	this.runLoop = function() {
 		/* Answer a question and schedule answering the next one in some random amount of time */
+		this.paused = false;
 		this.getRice();
-		this.timeoutId = setTimeout(function(){FRthis.runLoop()}, Math.random()*2400+2100+(Math.random()<.02?(Math.random()*35000):0) );
+		this.timeoutId = setTimeout(function(){FRthis.runLoop()}, Math.random()*2600+2400+(Math.random()<.03?(Math.random()*30000):0) );
 		this.iterations++;
 	};
+	
+	this.pause = function() {
+		this.paused = true;
+		clearTimeout(this.timeoutId);
+	}
+	this.resume = this.runLoop;
 	
 	this.getRice = function() {
 		var type = $("div[class=subject-title]").text(), status, Answer, n=0;
@@ -95,7 +103,7 @@ function FRBot() {
 	
 	this.status = function() {
 		if( this.started != 0 ) {
-			var info = '';
+			var info = this.paused ? '(PAUSED)\n' : '';
 			var elapsedMinutes = ( Date.now() - this.started ) / ( 1000 * 60 );
 			info = info.concat( 'Running for ' );
 			if( elapsedMinutes <= 59 )
