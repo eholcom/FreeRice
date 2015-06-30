@@ -14,6 +14,7 @@
 * 
 *  The following will work, but it will have to learn what's correct as it goes:
 *   - Famous Paintings
+*   - World Capitals
 * ------------------------------------------
 *
 * # May want to move answer keys out to a separate .js file (that could have issues loading cross-domain though).
@@ -70,15 +71,15 @@ function FRBot() {
 		if( type.indexOf("Chemical Sym")!=-1 ) {
 			Answer = ElementLookup[$("#question-title b").text()];
 		}
-		else if( type.indexOf("Vocab")!=-1 ) {
+		else if( type.indexOf("Vocab")!=-1 || type.indexOf("World Capitals")!=-1 ) {
 			if( $("#game-status td").length )
-				VocabAnswers[$("#game-status td").text().split(" = ")[0].substr(status.indexOf("Correct!")!=-1?9:11)]=$("#game-status td").text().split(" = ")[1];
+				VocabAnswers[status.split(" = ")[0].substr(status.indexOf("Correct!")!=-1?9:11)]=status.split(" = ")[1];
 			Answer = VocabAnswers[$("#question-title b").text()];
 			if( Answer==null )
 				Answer = 1 + Math.round(Math.random()*3);
 		}
 		else if( type.indexOf("Identify Countries")!=-1 || type.indexOf("Flags")!=-1 || type.indexOf("World Landmarks")!=-1 || type.indexOf("Famous Paintings")!=-1 ) {
-			if( $("#game-status td").length && typeof(lastQtn)!="undefined" )
+			if( status.length && typeof(lastQtn)!="undefined" )
 				ImgAnswerKey[lastQtn]=$("#game-status td").text().split(" = ")[1];
 			lastQtn = $("#pictureDisplay img")[0].src.split('/').pop().split('.')[0].replace(/[^a-z0-9]/gi, '_');
 			Answer = ImgAnswerKey[lastQtn];
